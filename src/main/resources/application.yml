@@ -1,0 +1,111 @@
+spring:
+  profiles:
+    default:
+    - local
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - local
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/graphms
+    username: root
+    password: passw
+application:
+  cn-provider-url: 'http://localhost:81'
+  apps-provider-url: 'http://localhost:82'
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - docker
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSW}
+application:
+  cn-provider-url: 'http://${CN_PROVIDER_URL}'
+  apps-provider-url: 'http://${APPS_PROVIDER_URL}'
+---
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    hibernate.ddl-auto: create-drop
+    defer-datasource-initialization: true
+    generate-ddl: true
+    show-sql: true
+  sql:
+    init:
+      mode: always
+graphql:
+  servlet:
+    # Sets if GraphQL servlet should be created and exposed. If not specified defaults to "true".
+    enabled: true
+    # Sets the path where GraphQL servlet will be exposed. If not specified defaults to "/graphql"
+    mapping: /graphql
+    cors-enabled: true
+    cors:
+      allowed-origins: '*'
+      allowed-methods: GET, HEAD, POST
+    # if you want to @ExceptionHandler annotation for custom GraphQLErrors
+    exception-handlers-enabled: true
+    context-setting: PER_REQUEST_WITH_INSTRUMENTATION
+  voyager:
+    enabled: true
+    basePath: /
+    endpoint: /graphql
+    cdn:
+      enabled: false
+      version: latest
+    pageTitle: Voyager
+    displayOptions:
+      skipRelay: true
+      skipDeprecated: true
+      rootType: Query
+      sortByAlphabet: false
+      showLeafFields: true
+      hideRoot: false
+    hideDocs: false
+    hideSettings: false
+  playground:
+    endpoint: /graphql
+    subscriptionEndpoint: /subscriptions
+    staticPath.base: my-playground-resources-folder
+    enabled: true
+    pageTitle: Playground
+    cdn:
+      enabled: true
+      version: latest
+    settings:
+      editor.cursorShape: line
+      editor.fontFamily: "'Source Code Pro', 'Consolas', 'Inconsolata', 'Droid Sans Mono', 'Monaco', monospace"
+      editor.fontSize: 14
+      editor.reuseHeaders: true
+      editor.theme: dark
+      prettier.printWidth: 80
+      prettier.tabWidth: 2
+      prettier.useTabs: false
+      request.credentials: omit
+      schema.polling.enable: true
+      schema.polling.endpointFilter: "*localhost*"
+      schema.polling.interval: 2000
+      schema.disableComments: true
+      tracing.hideTracingResponse: true
+    headers:
+      headerFor: AllTabs
+  altair:
+    enabled: true
+    mapping: /altair
+    page-title: Altair
+    cdn:
+      enabled: false
+      version: 4.0.2
+    options:
+      endpoint-url: /graphql
+      subscriptions-endpoint: /subscriptions
+      initial-settings:
+        theme: dracula

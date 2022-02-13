@@ -1,0 +1,40 @@
+{
+	"roles": [
+		{
+			"id":   1,
+			"name": "COMPANY-DEPARTMENT-DEVELOPER",
+			"applications": [{
+				"id": 1,
+				"name": "Gitlab"
+			}, {
+				"id": 2,
+				"name": "Jenkins"
+			}]
+		},
+		{
+			"id": 2,
+			"name": "COMPANY-DEPARTMENT-ARCHITECT",
+			"applications": [{
+				"id": 1,
+				"name": "Gitlab"
+			}, {
+				"id": 2,
+				"name": "Jenkins"
+			}, {
+				"id": 3,
+				"name": "AWS"
+			}, {
+				"id": 4,
+				"name": "Azure"
+			}]
+		},
+		{
+			"id": 3,
+			"name": "COMPANY-DEPARTMENT-MANAGER",
+			"applications": [{
+				"id": 5,
+				"name": "Billing"
+			}]
+		}
+	]
+}

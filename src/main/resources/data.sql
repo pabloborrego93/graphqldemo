@@ -1,0 +1,10 @@
+INSERT INTO user (id, email, born) VALUES (1, 'developer@company.com', '2021-12-08 15:46:25.695453');
+INSERT INTO user (id, email, born) VALUES (2, 'architect@company.com', '2021-12-07 10:43:22.543544');
+INSERT INTO user (id, email, born) VALUES (3, 'manager@company.com', '2021-05-07 10:43:22.543544');
+INSERT INTO role (id, name) VALUES (1, 'COMPANY-DEPARTMENT-DEVELOPER');
+INSERT INTO role (id, name) VALUES (2, 'COMPANY-DEPARTMENT-ARCHITECT');
+INSERT INTO role (id, name) VALUES (3, 'COMPANY-DEPARTMENT-MANAGER');
+INSERT INTO user_roles (user_id, roles_id) VALUES (1, 1);
+INSERT INTO user_roles (user_id, roles_id) VALUES (2, 1);
+INSERT INTO user_roles (user_id, roles_id) VALUES (2, 2);
+INSERT INTO user_roles (user_id, roles_id) VALUES (3, 3);

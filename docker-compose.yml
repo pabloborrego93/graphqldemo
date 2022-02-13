@@ -1,0 +1,57 @@
+version: '3.9'
+services:
+  application:
+    image: gqldemo
+    restart: always
+    environment: 
+      SPRING_PROFILES_ACTIVE: docker
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_NAME: graphms
+      DB_USER: root
+      DB_PASSW: passw
+      CN_PROVIDER_URL: cnprovider
+      APPS_PROVIDER_URL: appsprovider
+    ports: 
+      - "8080:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - main_network
+  database:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: passw
+      MYSQL_DATABASE: graphms
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: "mysqladmin ping -h localhost"
+      interval: 1s
+      timeout: 1s
+      retries: 60
+    networks:
+      - main_network
+  cnprovider:
+    image: clue/json-server
+    restart: always
+    volumes:
+      - /absolute-route-to/cnprovider.json:/data/db.json
+    ports:
+      - "0.0.0.0:81:80"
+    networks:
+      - main_network
+  appsprovider:
+    image: clue/json-server
+    restart: always
+    volumes:
+      - /absolute-route-to/appsprovider.json:/data/db.json
+    ports:
+      - "0.0.0.0:82:80"
+    networks:
+      - main_network
+networks:
+  main_network:
+    driver: bridge

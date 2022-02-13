@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "application.cn-provider-url",
+    "type": "java.lang.String",
+    "description": "A description for 'application.cn-provider-url'"
+  },
+  {
+    "name": "application.apps-provider-url",
+    "type": "java.lang.String",
+    "description": "A description for 'application.apps-provider-url'"
+  }
+]}

@@ -1,0 +1,19 @@
+{
+	"roles": [
+		{
+			"id":   1,
+			"name": "COMPANY-DEPARTMENT-DEVELOPER",
+			"dn":   "CN=DEVELOPER,CN=DEPARTMENT,DC=COMPANY,DC=com"
+		},
+		{
+			"id": 2,
+			"name": "COMPANY-DEPARTMENT-ARCHITECT",
+			"dn":   "CN=ARCHITECT,CN=DEPARTMENT,DC=COMPANY,DC=com"
+		},
+		{
+			"id": 3,
+			"name": "COMPANY-DEPARTMENT-MANAGER",
+			"dn":   "CN=MANAGER,CN=DEPARTMENT,DC=COMPANY,DC=com"
+		}
+	]
+}

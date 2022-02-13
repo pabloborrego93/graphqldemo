@@ -1,0 +1,6 @@
+type Role {
+    id: ID!
+    name: String!
+    dn: String!
+    applications: [Application!]!
+}

@@ -1,0 +1,4 @@
+type Application {
+    id: ID!
+    name: String!
+}
